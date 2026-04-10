@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Wireshark - Packet Analyzer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+
+    <main class="dashboard">
+      <header class="hero">
+        <h1>Mini Wireshark</h1>
+        <p>Clean device-wise DNS monitor for local network traffic visibility.</p>
+      </header>
+
+      <section class="developer card top-dev">
+        <span class="dev-label">Developer</span>
+        <strong>reinF(Saugat Sapkota)</strong>
+      </section>
+
+      <section class="controls card">
+        <div class="field-group">
+          <label for="interfaceSelect">Network Interface</label>
+          <select id="interfaceSelect"></select>
+        </div>
+
+        <div class="field-group">
+          <label for="domainFilter">Domain Filter (optional)</label>
+          <input id="domainFilter" type="text" placeholder="facebook, google, youtube..." />
+        </div>
+
+        <div class="actions">
+          <button id="refreshBtn" class="btn ghost">Refresh Interfaces</button>
+          <button id="scanBtn" class="btn ghost">ARP Scan</button>
+          <button id="startBtn" class="btn primary">Start Capture</button>
+          <button id="stopBtn" class="btn danger" disabled>Stop Capture</button>
+        </div>
+
+        <p id="statusText" class="status">Waiting to start capture.</p>
+        <p id="permissionWarning" class="warning hidden"></p>
+        <p id="limitationNote" class="note"></p>
+      </section>
+
+      <section class="stats-grid">
+        <article class="card stat-card">
+          <h3>Top Active Devices</h3>
+          <ul id="topDevicesList" class="mini-list"></ul>
+        </article>
+        <article class="card stat-card">
+          <h3>Popular Domains</h3>
+          <ul id="popularDomainsList" class="mini-list"></ul>
+        </article>
+      </section>
+
+      <section class="table-section card">
+        <div class="table-toolbar">
+          <h2>Connected Devices</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Device IP</th>
+                <th>Device Name</th>
+                <th>MAC Address</th>
+                <th>Total DNS Requests</th>
+                <th>Unique Domains</th>
+                <th>Last Domain</th>
+                <th>Last Seen</th>
+              </tr>
+            </thead>
+            <tbody id="deviceTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="device-filter-panel">
+          <label for="deviceFilter">Select Device (DNS view filter)</label>
+          <select id="deviceFilter">
+            <option value="ALL">ALL</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="table-section card">
+        <div class="table-toolbar">
+          <h2>Live DNS Requests (Last 200)</h2>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Filter by domain or device IP"
+          />
+        </div>
+
+        <div class="table-wrap" id="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Device IP</th>
+                <th>Device Name</th>
+                <th>MAC Address</th>
+                <th>Resolver IP</th>
+                <th>Raw Domain</th>
+                <th>Readable Domain</th>
+                <th>Protocol</th>
+                <th>Length</th>
+              </tr>
+            </thead>
+            <tbody id="requestTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
