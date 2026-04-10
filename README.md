@@ -1,13 +1,59 @@
-# Mini Wireshark DNS Monitor (Educational)
+# Mini Wireshark DNS Monitor
 
-An educational, advanced mini Wireshark-like tool that monitors DNS traffic in real time and maps:
+A lightweight, educational network monitoring project that shows which local device is requesting which domain in real time.
 
-- Device IP/MAC -> requested domain
+This project focuses on DNS-level visibility, so you can understand device activity across your network without the complexity of full Wireshark workflows.
 
-Built with Python, Flask, Flask-SocketIO, Scapy, and a clean Web UI.
+## Overview
+
+- Stack: Python, Flask, Flask-SocketIO, Scapy, HTML/CSS/JavaScript
+- Capture model: live packet sniffing with DNS parsing
+- Visibility model: device IP + MAC + device name + domain request
+- Interface support: Wi-Fi and Ethernet (auto-selected with Wi-Fi priority)
+
+## Key Features
+
+- Real-time DNS packet capture on selected interface
+- Wi-Fi-first default interface detection (Wi-Fi/Wireless/WLAN fallback logic)
+- Promiscuous mode capture for broader local visibility
+- Device-wise monitoring:
+  - Device Name
+  - Device IP
+  - Device MAC (when available)
+  - Request history
+- Domain intelligence:
+  - Raw Domain
+  - Cleaned Domain
+  - Readable Domain label (friendly service name)
+- Live dashboard sections:
+  - Top Active Devices
+  - Popular Domains
+  - Connected Devices
+  - Live DNS Requests (last 200)
+- Filters:
+  - Domain filter during capture
+  - Device dropdown filter for DNS table
+- Optional ARP scan for basic device discovery
+- Debounced UI updates for smoother rendering
+
+## Friendly Domain Mapping
+
+Examples included in the parser:
+
+- optimizationguide-pa.googleapis.com -> Google Optimization Service
+- mobile.events.data.microsoft.com -> Microsoft Telemetry
+- firestore.googleapis.com -> Google Firebase
+
+Suffix mapping examples:
+
+- googleapis.com -> Google Service
+- facebook.com -> Facebook
+- youtube.com -> YouTube
+- microsoft.com -> Microsoft
 
 ## Project Structure
 
+```text
 backend/
   app.py
   sniffer.py
@@ -16,35 +62,10 @@ frontend/
   style.css
   script.js
 requirements.txt
-
-## Features
-
-- Live packet capture with Scapy on selected interface.
-- Auto-selects default interface with Wi-Fi priority (Wi-Fi/Wireless/WLAN), fallback to first active.
-- Promiscuous capture mode enabled.
-- DNS query extraction in real time.
-- Raw domain + readable service mapping in output.
-- Device-wise traffic mapping:
-  - Device IP
-  - Device Name
-  - Device MAC (when available)
-  - Requested domain
-- Connected devices table with request counters.
-- Live DNS requests table.
-- Domain filter (for capture and UI view).
-- Device filter dropdown (show only selected device DNS requests).
-- Popular domain highlighting.
-- Top active devices ranking.
-- Optional ARP scan for basic network mapping.
-- Permission warning when not running as Administrator/root.
-- HTTPS visibility note in UI.
-- Debounced UI rendering for smoother live updates.
+README.md
+```
 
 ## Setup
-
-1. Open terminal in project root.
-2. Create virtual environment.
-3. Install dependencies.
 
 ### Windows (PowerShell)
 
@@ -66,32 +87,48 @@ pip install -r requirements.txt
 
 ## Run
 
-From project root (Windows PowerShell):
+From project root:
 
 ```powershell
 .\.venv\Scripts\python .\backend\app.py
 ```
 
-Then open:
+Open in browser:
 
+```text
 http://localhost:5000
+```
 
-## Important Notes (Permissions)
+## Screenshots
 
-- Packet sniffing usually requires elevated privileges.
-- On Windows, run terminal as Administrator.
-- On Linux/macOS, run with root/sudo as needed.
-- Install Npcap on Windows and enable WinPcap compatibility mode.
+The dashboard preview below uses your current project UI screenshots.
 
-## DNS Visibility Limitation
+1. Save your first screenshot as: `assets/screenshots/dashboard-overview.png`
+2. Save your second screenshot as: `assets/screenshots/dashboard-live-table.png`
 
-- HTTPS payloads are encrypted.
-- This tool provides DNS/domain-level visibility, not full decrypted web content.
+Once added, GitHub will render them automatically:
 
-## Educational Scope
+![Mini Wireshark Dashboard Overview](assets/screenshots/dashboard-overview.png)
 
-This project is a beginner-friendly network visibility tool for local traffic learning. It is not a full enterprise Wireshark replacement.
+![Mini Wireshark Live DNS Table](assets/screenshots/dashboard-live-table.png)
+
+## Requirements and Permissions
+
+- Run terminal as Administrator on Windows
+- Use sudo/root where required on Linux/macOS
+- Install Npcap on Windows
+- Enable WinPcap compatibility mode during Npcap installation
+
+## Important Limitation
+
+HTTPS payload content is encrypted. This tool intentionally provides DNS/domain-level visibility, not full decrypted web traffic inspection.
+
+## Educational Purpose
+
+This is an educational mini-monitor designed to help learners understand real-time DNS activity and device behavior on local networks. It is not intended to replace enterprise packet analysis platforms.
 
 ## Developer
 
-reinF(Saugat Sapkota)
+Built and maintained by reinF (Saugat Sapkota).
+
+If this project helped you learn something new, that is the biggest success of this work.
