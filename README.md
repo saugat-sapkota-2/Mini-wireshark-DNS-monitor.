@@ -36,6 +36,15 @@ This project focuses on DNS-level visibility, so you can understand device activ
 - Optional ARP scan for basic device discovery
 - Debounced UI updates for smoother rendering
 
+  ## Screenshots
+
+The dashboard preview below uses your current project UI screenshots.
+
+![Mini Wireshark Dashboard Overview](assets/screenshots/dashboard-overview.png)
+
+![Mini Wireshark Live DNS Table](assets/screenshots/dashboard-live-table.png)
+
+
 ## Friendly Domain Mapping
 
 Examples included in the parser:
@@ -99,18 +108,6 @@ Open in browser:
 http://localhost:5000
 ```
 
-## Screenshots
-
-The dashboard preview below uses your current project UI screenshots.
-
-1. Save your first screenshot as: `assets/screenshots/dashboard-overview.png`
-2. Save your second screenshot as: `assets/screenshots/dashboard-live-table.png`
-
-Once added, GitHub will render them automatically:
-
-![Mini Wireshark Dashboard Overview](assets/screenshots/dashboard-overview.png)
-
-![Mini Wireshark Live DNS Table](assets/screenshots/dashboard-live-table.png)
 
 ## Requirements and Permissions
 
