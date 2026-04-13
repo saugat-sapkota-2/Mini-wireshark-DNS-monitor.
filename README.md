@@ -36,13 +36,19 @@ This project focuses on DNS-level visibility, so you can understand device activ
 - Optional ARP scan for basic device discovery
 - Debounced UI updates for smoother rendering
 
-  ## Screenshots
+## Screenshots
 
-The dashboard preview below uses your current project UI screenshots.
+### Web Dashboard Preview
 
 ![Mini Wireshark Dashboard Overview](assets/screenshots/dashboard-overview.png)
 
 ![Mini Wireshark Live DNS Table](assets/screenshots/dashboard-live-table.png)
+
+### Kali TUI Preview
+
+![Kali TUI Live Capture](assets/screenshots/kali-tui-live.png)
+
+![Kali TUI Interface Selection](assets/screenshots/kali-tui-interface-select.png)
 
 
 ## Friendly Domain Mapping
