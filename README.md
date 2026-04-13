@@ -102,6 +102,33 @@ From project root:
 .\.venv\Scripts\python .\backend\app.py
 ```
 
+## Run TUI On Kali Linux
+
+From project root:
+
+```bash
+source .venv/bin/activate
+sudo .venv/bin/python backend/tui.py
+```
+
+Optional commands:
+
+```bash
+# List interfaces first
+sudo .venv/bin/python backend/tui.py --list-interfaces
+
+# Run with a specific interface
+sudo .venv/bin/python backend/tui.py --interface wlan0
+
+# Filter domains that contain text
+sudo .venv/bin/python backend/tui.py --filter google
+```
+
+Tips:
+
+- Use `Ctrl+C` to stop capture safely.
+- Run with `sudo` on Kali for packet capture permissions.
+
 Open in browser:
 
 ```text
