@@ -19,6 +19,7 @@ class DNSMonitorTUI:
     """Simple terminal UI for live DNS monitoring."""
 
     MAX_RECENT_ROWS = 25
+    DEVELOPER_CREDIT = "Developer: reinF (Saugat Sapkota)"
 
     def __init__(self, interface: str = "", domain_filter: str = "") -> None:
         self.console = Console()
@@ -122,6 +123,7 @@ class DNSMonitorTUI:
 
         state = "RUNNING" if self.running else "STOPPED"
         header.add_row("[bold cyan]Mini Wireshark DNS TUI[/bold cyan]", f"[bold]{state}[/bold]")
+        header.add_row(f"[dim]{self.DEVELOPER_CREDIT}[/dim]", "")
         header.add_row(f"Interface: {self.selected_interface_label}", f"Filter: {self.domain_filter or 'none'}")
         header.add_row("Stop with Ctrl+C", self.status_message)
 

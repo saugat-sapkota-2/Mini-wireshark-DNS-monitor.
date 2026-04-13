@@ -153,6 +153,6 @@ This is an educational mini-monitor designed to help learners understand real-ti
 
 ## Developer
 
-Built and maintained by reinF (Saugat Sapkota).
+Developer: reinF - (Saugat Sapkota).
 
 If this project helped you learn something new, that is the biggest success of this work.
